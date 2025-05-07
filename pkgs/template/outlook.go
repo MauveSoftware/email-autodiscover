@@ -18,12 +18,10 @@ const outlookTemplate = `<?xml version="1.0" encoding="utf-8" ?>
 
 			<Protocol>
 				<Type>IMAP</Type>
-				<TTL>1</TTL>
 				<Server>{{.ImapHost}}</Server>
 				<Port>{{.ImapPort}}</Port>
+				<DomainRequired>off</DomainRequired>
 				<LoginName>{{.Email}}</LoginName>
-				<DomainRequired>on</DomainRequired>
-				<DomainName>{{.Domain}}</DomainName>
 				<SPA>off</SPA>
 				<SSL>on</SSL>
 				<AuthRequired>on</AuthRequired>
@@ -35,12 +33,10 @@ const outlookTemplate = `<?xml version="1.0" encoding="utf-8" ?>
 			<Action>settings</Action>
 			<Protocol>
 				<Type>SMTP</Type>
-				<TTL>1</TTL>
 				<Server>{{.SmtpHost}}</Server>
 				<Port>{{.SmtpPort}}</Port>
+				<DomainRequired>off</DomainRequired>
 				<LoginName>{{.Email}}</LoginName>
-				<DomainRequired>on</DomainRequired>
-				<DomainName>{{.Domain}}</DomainName>
 				<SPA>off</SPA>
 				<SSL>on</SSL>
 				<AuthRequired>on</AuthRequired>

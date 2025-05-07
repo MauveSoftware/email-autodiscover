@@ -116,6 +116,7 @@ func (s *Server) HandleOutlookConfig(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
+
 	w.Header().Add("Content-type", "text/xml")
 	w.Write([]byte(reply))
 }
