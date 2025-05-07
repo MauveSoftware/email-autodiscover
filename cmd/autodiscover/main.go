@@ -9,7 +9,8 @@ import (
 	"os"
 	"sync"
 
-	"github.com/regnull/email-autodiscover/template"
+	"github.com/regnull/email-autodiscover/pkgs/helper"
+	"github.com/regnull/email-autodiscover/pkgs/template"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"gopkg.in/yaml.v2"
@@ -60,6 +61,7 @@ func (s *Server) HandleIOSConfig(w http.ResponseWriter, r *http.Request) {
 
 	newArgs := *s.args
 	newArgs.Email = email
+	newArgs.Domain = helper.ExtractDomainFromEmail(email)
 	reply, err := template.IOSMail(&newArgs)
 	if err != nil {
 		log.Error().Err(err).Msg("failed to generate iOS response")
@@ -107,9 +109,10 @@ func (s *Server) HandleOutlookConfig(w http.ResponseWriter, r *http.Request) {
 	log.Debug().Str("schema", xmlRec.Request.AcceptableResponseSchema).Msg("got schema")
 	newArgs := *s.args
 	newArgs.Email = xmlRec.Request.EMailAddress
+	newArgs.Domain = helper.ExtractDomainFromEmail(xmlRec.Request.EMailAddress)
 	reply, err := template.OutlookMail(&newArgs)
 	if err != nil {
-		log.Error().Err(err).Msg("failed to generate iOS response")
+		log.Error().Err(err).Msg("failed to generate Outlook response")
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}

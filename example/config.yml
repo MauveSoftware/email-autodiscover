@@ -1,0 +1,6 @@
+email-provider: mauve.email
+imap-host: imap.mauve.email
+imap-port: 993
+smtp-host: smtp.mauve.email
+smtp-port: 587
+payload-identifier: autoconfig.mauve.email
