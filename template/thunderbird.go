@@ -8,12 +8,12 @@ import (
 const thunderbirdTemplate = `<?xml version="1.0" encoding="UTF-8"?>
 <clientConfig version="1.1">
 	<emailProvider id="{{.EmailProvider}}">
-	    <domain>{{.Domain}}</domain>
+			<domain>{{.Domain}}</domain>
 
-	    <displayName>%EMAILADDRESS%</displayName>
-	    <displayShortName>%EMAILLOCALPART%</displayShortName>
+			<displayName>%EMAILADDRESS%</displayName>
+			<displayShortName>%EMAILLOCALPART%</displayShortName>
 
-	    <incomingServer type="imap">
+			<incomingServer type="imap">
 			<hostname>{{.ImapHost}}</hostname>
 			<port>{{.ImapPort}}</port>
 			<socketType>SSL</socketType>
@@ -21,13 +21,13 @@ const thunderbirdTemplate = `<?xml version="1.0" encoding="UTF-8"?>
 			<username>%EMAILADDRESS%</username>
 		</incomingServer>
 
-	    <outgoingServer type="smtp">
+			<outgoingServer type="smtp">
 			<hostname>{{.SmtpHost}}</hostname>
 			<port>{{.SmtpPort}}</port>
 			<socketType>SSL</socketType>
 			<authentication>password-cleartext</authentication>
 			<username>%EMAILADDRESS%</username>
-	    </outgoingServer>
+			</outgoingServer>
 	</emailProvider>
 </clientConfig>`
 
