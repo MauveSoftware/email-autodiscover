@@ -4,7 +4,7 @@ import (
 	"encoding/xml"
 	"flag"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"os"
 	"sync"
@@ -85,7 +85,7 @@ func (s *Server) HandleOutlookConfig(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer r.Body.Close()
-	body, err := ioutil.ReadAll(r.Body)
+	body, err := io.ReadAll(r.Body)
 	if err != nil {
 		log.Warn().Err(err).Msg("failed to read request body")
 		w.WriteHeader(http.StatusInternalServerError)
@@ -134,7 +134,7 @@ func main() {
 	}
 
 	log.Info().Str("config-file", args.ConfigFile).Msg("using config file")
-	config, err := ioutil.ReadFile(args.ConfigFile)
+	config, err := os.ReadFile(args.ConfigFile)
 	if err != nil {
 		log.Fatal().Err(err).Msg("failed to load config file")
 	}
