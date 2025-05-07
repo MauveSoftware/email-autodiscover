@@ -154,6 +154,7 @@ func main() {
 	http.HandleFunc("/mail/config-v1.1.xml", server.HandleThunderbirdConfig)
 	http.HandleFunc("/email.mobileconfig", server.HandleIOSConfig)
 	http.HandleFunc("/Autodiscover/Autodiscover.xml", server.HandleOutlookConfig)
+	http.HandleFunc("/autodiscover/autodiscover.xml", server.HandleOutlookConfig)
 
 	var wg sync.WaitGroup
 
